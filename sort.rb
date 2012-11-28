@@ -11,13 +11,13 @@ class SortTag < Liquid::Tag
 
     @var = @attributes['var']
     @key = @attributes['by']
-    #@direction = @attributes['direction']
+    @direction = @attributes['direction']
   end
 
   def render(context)
     context[@var].sort! { |a, b| a[@key] <=> b[@key] }
 
-    if @attributes['direction'] == 'up'
+    if @direction == 'up'
       context[@var].reverse!
     end
 
